@@ -25,3 +25,12 @@ map <leader>e :e! ~/.vim/vimrc<cr>
 
 " When vimrc is edited, reload it
 autocmd! bufwritepost vimrc source ~/.vim/vimrc
+
+colorscheme lucius
+syntax enable
+set shiftwidth=4
+
+" extend runtimepath, include pathogen
+set runtimepath=$HOME/.vim/bundle/vim-pathogen,$VIMRUNTIME
+"source all plugins within bundle
+call pathogen#runtime_append_all_bundles() 
