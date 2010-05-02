@@ -21,7 +21,7 @@ let g:mapleader = ","
 nmap <leader>w :w!<cr>
 
 " Fast editing of the .vimrc
-map <leader>e :e! ~/.vim/vimrc<cr>
+map <leader>e :tabe! ~/.vim/vimrc<cr>
 
 " When vimrc is edited, reload it
 autocmd! bufwritepost vimrc source ~/.vim/vimrc
@@ -31,6 +31,6 @@ syntax enable
 set shiftwidth=4
 
 " extend runtimepath, include pathogen
-set runtimepath=$HOME/.vim/bundle/vim-pathogen,$VIMRUNTIME
+set runtimepath=$HOME/.vim,$HOME/.vim/bundle/vim-pathogen,$VIMRUNTIME
 "source all plugins within bundle
 call pathogen#runtime_append_all_bundles() 
