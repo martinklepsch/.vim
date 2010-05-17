@@ -21,14 +21,25 @@ let g:mapleader = ","
 nmap <leader>w :w!<cr>
 
 " Fast editing of the .vimrc
-map <leader>e :tabe! ~/.vim/vimrc<cr>
+map <leader>e :tabe! ~/.vim/vimrc<CR>
+" also edit shell config fast
+map <leader>z :tabe! ~/.zshrc<CR>
 
 " When vimrc is edited, reload it
 autocmd! bufwritepost vimrc source ~/.vim/vimrc
 
 colorscheme lucius
-syntax enable
+syntax on
+set number
+set hlsearch
+
+" Tabs and Spaces
+set tabstop=4
+set smarttab
 set shiftwidth=4
+set autoindent
+set noexpandtab
+set backspace=start,indent
 
 " extend runtimepath, include pathogen
 set runtimepath=$HOME/.vim,$HOME/.vim/bundle/vim-pathogen,$VIMRUNTIME
