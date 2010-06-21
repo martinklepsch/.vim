@@ -46,6 +46,8 @@ map <leader>n :tabnext<cr>
 map <leader>e :tabe! ~/.vim/vimrc<CR>
 " also edit shell config fast
 map <leader>z :tabe! ~/.zshrc<CR>
+" Nerdtree Bindings
+map <leader>t :NERDTreeToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ PLUGINS & PATHOGEN
