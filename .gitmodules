@@ -12,4 +12,4 @@
 	url = git://github.com/vim-bundles/gist-vim.git
 [submodule "bundle/vim-pastie"]
 	path = bundle/vim-pastie
-	url = http://github.com/tpope/vim-pastie.git
+	url = git://github.com/vim-bundles/vim-pastie.git
