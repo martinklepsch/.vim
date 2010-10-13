@@ -2,7 +2,6 @@
 """ GENERAL EDITOR SETTINGS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tabs and Spaces
-set tabstop=4
 set smarttab
 set shiftwidth=4
 set autoindent
@@ -31,6 +30,20 @@ autocmd InsertEnter * hi statusline ctermbg=154 ctermfg=235
 autocmd InsertLeave * hi statusline ctermbg=166 ctermfg=235
 hi statusline ctermbg=166 ctermfg=235
 
+" Don't do any backups while editing a file
+set nobackup
+set nowritebackup
+set noswapfile
+
+" Hilight current line
+set cursorline
+
+" Save file when vim loses focus
+au FocusLost * :wa
+
+" Highlight column 80
+set colorcolumn=80
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ BINDINGS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -49,6 +62,13 @@ map <leader>z :tabe! ~/.zshrc<CR>
 " Nerdtree Bindings
 map <leader>t :NERDTreeToggle<CR>
 
+" Sudo-Write for when you opened a file without sudo
+cmap w!! w !sudo tee % >/dev/null
+
+" Quick escaping
+inoremap kj <ESC>
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ PLUGINS & PATHOGEN
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -56,6 +76,7 @@ map <leader>t :NERDTreeToggle<CR>
 set runtimepath=$HOME/.vim,$HOME/.vim/bundle/vim-pathogen,$VIMRUNTIME
 "source all plugins within bundle
 call pathogen#runtime_append_all_bundles() 
+call pathogen#helptags()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ UNSORTED
