@@ -1,20 +1,35 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""" GENERAL EDITOR SETTINGS
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tabs and Spaces
+" vimrc
+" Author: Martin Klepsch <martinklepsch@gmail.com>
+
+""" TABS AND SPACES
 set smarttab
 set shiftwidth=4
+set tabstop=4					" 4 characters tab
 set autoindent
-set noexpandtab
-" Backspace as usual
-set backspace=indent,eol,start
+set noexpandtab					" dont expand tabs to spaces
+set listchars=tab:⇢\ ,trail:·	" show tabchar and trailing whitespace
+set list
 
+""" COMPLETION
+set completeopt=longest
+set completeopt+=menu,preview
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" COMMAND LINE COMPLETION
+set wildmenu
+set wildmode=longest:full,full
+
+""" FORMATTING OPTIONS
+set formatoptions=
+set formatoptions+=t		" wrap lines according to textwidth setting
+set formatoptions+=n		" Format numbered lists
+set formatoptions+=c		" Format comments
+set formatoptions+=1		" break before 1-letter words
+set formatoptions+=l		" dont break existing long lines
+set formatoptions+=r		" continue comments
+
 """ VIM-SPECIFIC SETTINGS
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Sets how many lines of history VIM has to remember
-set history=300
+set history=300 			" last 300 commands
+set bs=indent,eol,start		" backspace as we know it
 
 " Enable filetype plugin
 filetype plugin on
@@ -35,18 +50,25 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" Hilight current line
-set cursorline
+set cursorline				" highlight cursorline
+au FocusLost * :wa			" save file when vim loses focus
 
-" Save file when vim loses focus
-au FocusLost * :wa
+set colorcolumn=80			" highlight column 80
 
-" Highlight column 80
-set colorcolumn=80
+" Always display at least 5 lines to the window edge
+set scrolloff=5
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""" BINDINGS
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Show matching brackets
+set showmatch
+
+" Dont break lines wider than the window
+" set nowrap
+set sidescrolloff=10
+
+" Force myself to not write lines longer than 78 chars
+set textwidth=78
+
+""" MAPPINGS
 let mapleader = ","
 let g:mapleader = ","
 
@@ -68,6 +90,10 @@ cmap w!! w !sudo tee % >/dev/null
 " Quick escaping
 inoremap kj <ESC>
 
+""" SEARCHING
+set ignorecase
+set incsearch
+set smartcase 			" case sensitive if there is an uppercase letter
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ PLUGINS & PATHOGEN
