@@ -115,3 +115,8 @@ colorscheme lucius
 syntax on
 set number
 set hlsearch
+
+""" Filetype detection
+augroup filetypedetect
+	au BufNewFile,BufRead *.sign,*.impl    set ft=opal
+augroup END
