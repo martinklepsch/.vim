@@ -104,6 +104,8 @@ set runtimepath=$HOME/.vim,$HOME/.vim/bundle/vim-pathogen,$VIMRUNTIME
 call pathogen#runtime_append_all_bundles() 
 call pathogen#helptags()
 
+" Paster
+let g:PASTE_URI = 'http://pzt.me/'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ UNSORTED
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

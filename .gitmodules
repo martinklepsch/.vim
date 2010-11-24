@@ -1,18 +1,18 @@
 [submodule "bundle/vim-pathogen"]
 	path = bundle/vim-pathogen
-	url = git://github.com/vim-bundles/vim-pathogen.git
+	url = git://github.com/tpope/vim-pathogen.git
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
-	url = git://github.com/vim-bundles/nerdtree.git
+	url = git://github.com/scrooloose/nerdtree.git
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
-	url = git://github.com/vim-bundles/nerdcommenter.git
-[submodule "bundle/gist-vim"]
-	path = bundle/gist-vim
-	url = git://github.com/vim-bundles/gist-vim.git
-[submodule "bundle/vim-pastie"]
-	path = bundle/vim-pastie
-	url = git://github.com/vim-bundles/vim-pastie.git
+	url = git://github.com/scrooloose/nerdcommenter.git
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
+[submodule "bundle/snipmate"]
+	path = bundle/snipmate
+	url = git://github.com/msanders/snipmate.vim.git
+[submodule "bundle/paster"]
+	path = bundle/paster
+	url = git://github.com/vim-scripts/paster.vim.git
