@@ -13,12 +13,12 @@
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = git://github.com/msanders/snipmate.vim.git
-[submodule "bundle/paster"]
-	path = bundle/paster
-	url = git://github.com/vim-scripts/paster.vim.git
 [submodule "bundle/fuzzyfinder"]
 	path = bundle/fuzzyfinder
 	url = git://github.com/vim-scripts/FuzzyFinder.git
-[submodule "bundle/L9"]
+[submodule "bundle/L9"]; this is a requirement by fuzzyfinder
 	path = bundle/L9
 	url = git://github.com/vim-scripts/L9.git
+[submodule "bundle/vim-fugitive"]
+	path = bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
