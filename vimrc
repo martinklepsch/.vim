@@ -112,8 +112,8 @@ let g:PASTE_URI = 'http://pzt.me/'
 " When vimrc is edited, reload it
 autocmd! bufwritepost vimrc source ~/.vim/vimrc
 
-let t_Co = 256
-colorscheme lucius
+set background=dark
+colorscheme solarized
 syntax on
 set number
 set hlsearch
