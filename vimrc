@@ -144,3 +144,4 @@ set hlsearch
 """ Filetype detection
 augroup filetypedetect
 augroup END
+let g:netrw_dirhistmax = 0
