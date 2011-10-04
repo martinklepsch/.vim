@@ -114,6 +114,8 @@ Bundle 'mileszs/ack.vim'
 
 " vim-scripts repos
 Bundle 'VimClojure'
+Bundle 'L9'
+Bundle 'FuzzyFinder'
 
 " non github repos
 "Bundle 'git://git.wincent.com/command-t.git'
@@ -155,4 +157,8 @@ let g:netrw_dirhistmax = 0
 au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" PLUGIN BINDINGS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>a :Ack!
+map <leader>b :FufFile **/<cr>
