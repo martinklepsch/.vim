@@ -41,9 +41,9 @@ set autoread
 " Statusline
 set laststatus=2
 set statusline=\ %<%F[%{&ff}]%h%w%m%r%y%=L:%l/%L\ (%p%%)\ C:%c\
-autocmd InsertEnter * hi statusline ctermbg=235 ctermfg=154
-autocmd InsertLeave * hi statusline ctermbg=235 ctermfg=166
-hi statusline ctermbg=235 ctermfg=166
+autocmd InsertEnter * hi statusline ctermbg=154 ctermfg=235
+autocmd InsertLeave * hi statusline ctermbg=166 ctermfg=235
+hi statusline ctermbg=166 ctermfg=235
 
 " Don't do any backups while editing a file
 set nobackup
@@ -110,6 +110,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-commentary'
 Bundle 'scrooloose/nerdtree'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'mileszs/ack.vim'
 
 " vim-scripts repos
 Bundle 'VimClojure'
@@ -136,7 +137,11 @@ filetype plugin indent on     " required!
 autocmd! bufwritepost vimrc source ~/.vim/vimrc
 
 set background=dark
-colorscheme solarized
+if has('gui_running')
+	colorscheme solarized
+else
+	colorscheme lucius
+endif
 syntax on
 set number
 set hlsearch
@@ -145,3 +150,9 @@ set hlsearch
 augroup filetypedetect
 augroup END
 let g:netrw_dirhistmax = 0
+
+" Save folds
+au BufWinLeave * silent! mkview
+au BufWinEnter * silent! loadview
+
+map <leader>a :Ack!
