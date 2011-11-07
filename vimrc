@@ -2,14 +2,14 @@
 " Author: Martin Klepsch <martinklepsch@gmail.com>
 
 """ TABS AND SPACES
-set smarttab
+" set smarttab
 set shiftwidth=4
 set tabstop=4                   " 4 characters tab
 set autoindent
 set noexpandtab                 " dont expand tabs to spaces
 set listchars=tab:⇢\ ,trail:·   " show tabchar and trailing whitespace
 set list
-   
+
 """ COMPLETION
 set completeopt=longest
 set completeopt+=menu,preview
@@ -68,7 +68,9 @@ set sidescrolloff=10
 " Force myself to not write lines longer than 78 chars
 set textwidth=92
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ MAPPINGS
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ","
 let g:mapleader = ","
 
@@ -87,10 +89,15 @@ map <leader>t :NERDTreeToggle<CR>
 " Quick escaping
 inoremap kj <ESC>
 
+" show todos
+map <leader>l :Ack!"TODO MKL"<CR>
+
 """ SEARCHING
 set ignorecase
 set incsearch
 set smartcase "case sensitive if there is an uppercase letter
+
+let g:ctrlp_working_path_mode = 2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ PLUGINS & PATHOGEN
@@ -111,11 +118,13 @@ Bundle 'tpope/vim-commentary'
 Bundle 'scrooloose/nerdtree'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'mileszs/ack.vim'
+Bundle 'kien/ctrlp.vim'
 
 " vim-scripts repos
 Bundle 'VimClojure'
-Bundle 'L9'
-Bundle 'FuzzyFinder'
+" Bundle 'L9'
+" Bundle 'FuzzyFinder'
+Bundle 'scratch.vim'
 
 " non github repos
 "Bundle 'git://git.wincent.com/command-t.git'
@@ -162,3 +171,24 @@ au BufWinEnter * silent! loadview
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>a :Ack!
 map <leader>b :FufFile **/<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" FUNCTIONS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+command! ScratchToggle call ScratchToggle()
+function! ScratchToggle()
+  if exists("w:is_scratch_window")
+    unlet w:is_scratch_window
+    exec "q"
+  else
+    exec "normal! :Sscratch\<cr>\<C-W>J:resize 13\<cr>"
+    let w:is_scratch_window = 1
+  endif
+endfunction
+nnoremap <silent> <leader><tab> :ScratchToggle<cr>
+
+" Removes trailing spaces
+function TrimWhiteSpace()
+  %s/\s*$//
+  ''
+:endfunction
