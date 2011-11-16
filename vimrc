@@ -3,10 +3,10 @@
 
 """ TABS AND SPACES
 " set smarttab
-set shiftwidth=4
-set tabstop=4                   " 4 characters tab
+set shiftwidth=2
+set tabstop=2                   " 4 characters tab
 set autoindent
-set noexpandtab                 " dont expand tabs to spaces
+set expandtab                   " dont expand tabs to spaces
 set listchars=tab:⇢\ ,trail:·   " show tabchar and trailing whitespace
 set list
 
@@ -121,6 +121,12 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'mileszs/ack.vim'
 Bundle 'kien/ctrlp.vim'
 
+" Snipmate and dependencies
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "honza/snipmate-snippets"
+Bundle "garbas/vim-snipmate"
+
 " vim-scripts repos
 Bundle 'VimClojure'
 " Bundle 'L9'
@@ -193,3 +199,7 @@ function TrimWhiteSpace()
   %s/\s*$//
   ''
 :endfunction
+autocmd FileWritePre * :call TrimWhiteSpace()
+autocmd FileAppendPre * :call TrimWhiteSpace()
+autocmd FilterWritePre * :call TrimWhiteSpace()
+autocmd BufWritePre * :call TrimWhiteSpace()
