@@ -4,7 +4,8 @@
 """ TABS AND SPACES
 " set smarttab
 set shiftwidth=2
-set tabstop=2                   " 4 characters tab
+set softtabstop=2
+set tabstop=2                   " 2 characters tab
 set autoindent
 set expandtab                   " dont expand tabs to spaces
 set listchars=tab:⇢\ ,trail:·   " show tabchar and trailing whitespace
@@ -116,22 +117,13 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-bundler'
 Bundle 'scrooloose/nerdtree'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'mileszs/ack.vim'
 Bundle 'kien/ctrlp.vim'
 
-" Snipmate and dependencies
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "honza/snipmate-snippets"
-Bundle "garbas/vim-snipmate"
-
 " vim-scripts repos
-Bundle 'VimClojure'
-" Bundle 'L9'
-" Bundle 'FuzzyFinder'
-Bundle 'scratch.vim'
 
 " non github repos
 "Bundle 'git://git.wincent.com/command-t.git'
