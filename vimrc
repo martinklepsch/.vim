@@ -145,6 +145,8 @@ filetype plugin indent on     " required!
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " When vimrc is edited, reload it
 autocmd! bufwritepost vimrc source ~/.vim/vimrc
+autocmd! bufwritepost snips.vim source ~/.vim/snips.vim
+source ~/.vim/snips.vim
 
 set background=dark
 if has('gui_running')
@@ -166,26 +168,31 @@ au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""" PLUGIN BINDINGS
+""" PLUGIN CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>a :Ack!
-map <leader>b :FufFile **/<cr>
+
+" Fugitive
+augroup ft_fugitive
+    au!
+    au BufNewFile,BufRead .git/index setlocal nolist
+augroup END
+
+" ctrlp
+let g:ctrlp_map = '<leader>,'
+let g:ctrlp_dont_split = 'NERD_tree_2'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" FILETYPE SPECIFIC STUFF
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup ft_ruby
+    au!
+    au Filetype ruby setlocal foldmethod=syntax
+augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ FUNCTIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-command! ScratchToggle call ScratchToggle()
-function! ScratchToggle()
-  if exists("w:is_scratch_window")
-    unlet w:is_scratch_window
-    exec "q"
-  else
-    exec "normal! :Sscratch\<cr>\<C-W>J:resize 13\<cr>"
-    let w:is_scratch_window = 1
-  endif
-endfunction
-nnoremap <silent> <leader><tab> :ScratchToggle<cr>
-
 " Removes trailing spaces
 function TrimWhiteSpace()
   %s/\s*$//
@@ -195,3 +202,17 @@ autocmd FileWritePre * :call TrimWhiteSpace()
 autocmd FileAppendPre * :call TrimWhiteSpace()
 autocmd FilterWritePre * :call TrimWhiteSpace()
 autocmd BufWritePre * :call TrimWhiteSpace()
+
+" Displays indent guides
+let g:indentguides_state = 0
+function! IndentGuides() " {{{
+    if g:indentguides_state
+        let g:indentguides_state = 0
+        2match None
+    else
+        let g:indentguides_state = 1
+        execute '2match IndentGuides /\%(\_^\s*\)\@<=\%(\%'.(0*&sw+1).'v\|\%'.(1*&sw+1).'v\|\%'.(2*&sw+1).'v\|\%'.(3*&sw+1).'v\|\%'.(4*&sw+1).'v\|\%'.(5*&sw+1).'v\|\%'.(6*&sw+1).'v\|\%'.(7*&sw+1).'v\)\s/'
+    endif
+endfunction " }}}
+nnoremap <leader>i :call IndentGuides()<cr>
+
