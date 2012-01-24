@@ -195,7 +195,7 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Removes trailing spaces
 function TrimWhiteSpace()
-  %s/\s*$//
+  %s/\s*$//e
   ''
 :endfunction
 autocmd FileWritePre * :call TrimWhiteSpace()
