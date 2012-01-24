@@ -66,8 +66,11 @@ set showmatch
 " set nowrap
 set sidescrolloff=10
 
-" Force myself to not write lines longer than 78 chars
+" Force myself to not write lines longer than 92 chars
 set textwidth=92
+
+" Get some spell checking
+setlocal spell spelllang=en_us
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ MAPPINGS
@@ -151,6 +154,7 @@ source ~/.vim/snips.vim
 set background=dark
 if has('gui_running')
 	colorscheme solarized
+  set guioptions=
 else
 	colorscheme lucius
 endif
