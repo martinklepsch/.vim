@@ -171,6 +171,16 @@ let g:netrw_dirhistmax = 0
 au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview
 
+" When run from the fish shell, VIM gives error messages like: "E484: Can't open file
+" /tmp/v916556/0"
+
+" The problem occurs because VIM expects to be run from a POSIX shell, although this is
+" not mentioned anywhere in the documentation. A workaround is to add the following lines to
+" the your local ~/.vimrc or global /etc/vimrc file:
+if $SHELL =~ 'bin/fish'
+  set shell=/bin/sh
+endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ PLUGIN CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
