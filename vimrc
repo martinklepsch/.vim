@@ -7,7 +7,7 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2                   " 2 characters tab
 set autoindent
-set expandtab                   " dont expand tabs to spaces
+set expandtab
 set listchars=tab:⇢\ ,trail:·   " show tabchar and trailing whitespace
 set list
 
