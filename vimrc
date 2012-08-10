@@ -69,9 +69,6 @@ set sidescrolloff=10
 " Force myself to not write lines longer than 92 chars
 set textwidth=92
 
-" Get some spell checking
-setlocal spell spelllang=en_us
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ MAPPINGS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -199,10 +196,6 @@ let g:ctrlp_dont_split = 'NERD_tree_2'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ FILETYPE SPECIFIC STUFF
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-augroup ft_ruby
-    au!
-    au Filetype ruby setlocal foldmethod=syntax
-augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ FUNCTIONS
