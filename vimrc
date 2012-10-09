@@ -80,8 +80,6 @@ nmap <leader>w :w!<cr>
 " Fast Tab-switching
 map <leader>p :tabprevious<cr>
 map <leader>n :tabnext<cr>
-" Fast editing of the .vimrc
-map <leader>e :tabe! ~/.vim/vimrc<CR>
 " also edit shell config fast
 map <leader>z :tabe! ~/.zshrc<CR>
 " Nerdtree Bindings
@@ -124,6 +122,7 @@ Bundle 'mileszs/ack.vim'
 Bundle 'kien/ctrlp.vim'
 
 " vim-scripts repos
+Bundle 'VimClojure'
 
 " non github repos
 "Bundle 'git://git.wincent.com/command-t.git'
@@ -193,10 +192,14 @@ augroup END
 let g:ctrlp_map = '<leader>,'
 let g:ctrlp_dont_split = 'NERD_tree_2'
 
+" Vimclojure
+let g:vimclojure#ParenRainbow = 1
+let g:vimclojure#HighlightBuiltins = 1
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ FILETYPE SPECIFIC STUFF
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+au BufRead,BufNewFile *.thor set filetype=ruby
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ FUNCTIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
