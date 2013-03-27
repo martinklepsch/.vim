@@ -120,6 +120,8 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'mileszs/ack.vim'
 Bundle 'kien/ctrlp.vim'
+Bundle 'slim-template/vim-slim'
+Bundle 'mhinz/vim-signify'
 
 " vim-scripts repos
 Bundle 'VimClojure'
