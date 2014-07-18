@@ -69,6 +69,13 @@ set sidescrolloff=10
 " Force myself to not write lines longer than 92 chars
 set textwidth=92
 
+"""""""""""""""""
+""" SEARCHING
+"""""""""""""""""
+set ignorecase
+set incsearch
+set smartcase "case sensitive if there is an uppercase letter
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ MAPPINGS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -91,12 +98,8 @@ inoremap kj <ESC>
 " show todos
 map <leader>l :Ack!"TODO MKL"<CR>
 
-""" SEARCHING
-set ignorecase
-set incsearch
-set smartcase "case sensitive if there is an uppercase letter
-
 let g:ctrlp_working_path_mode = 2
+map <leader>r :RainbowParenthesesToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ PLUGINS & PATHOGEN
@@ -122,9 +125,18 @@ Bundle 'mileszs/ack.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'slim-template/vim-slim'
 Bundle 'mhinz/vim-signify'
+Bundle 'mattn/gist-vim'
+Bundle 'mattn/webapi-vim'
+Bundle 'Shutnik/jshint2.vim'
 
-" vim-scripts repos
-Bundle 'VimClojure'
+" clojure related stuff
+Bundle 'paredit.vim'
+Bundle 'tpope/vim-leiningen'
+Bundle 'tpope/vim-fireplace'
+Bundle 'tpope/vim-classpath'
+Bundle 'guns/vim-clojure-static'
+Bundle 'kien/rainbow_parentheses.vim'
+
 
 " non github repos
 "Bundle 'git://git.wincent.com/command-t.git'
@@ -194,37 +206,9 @@ augroup END
 let g:ctrlp_map = '<leader>,'
 let g:ctrlp_dont_split = 'NERD_tree_2'
 
-" Vimclojure
-let g:vimclojure#ParenRainbow = 1
-let g:vimclojure#HighlightBuiltins = 1
-
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ FILETYPE SPECIFIC STUFF
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au BufRead,BufNewFile *.thor set filetype=ruby
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""" FUNCTIONS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Removes trailing spaces
-function TrimWhiteSpace()
-  %s/\s*$//e
-  ''
-:endfunction
-autocmd FileWritePre * :call TrimWhiteSpace()
-autocmd FileAppendPre * :call TrimWhiteSpace()
-autocmd FilterWritePre * :call TrimWhiteSpace()
-autocmd BufWritePre * :call TrimWhiteSpace()
-
-" Displays indent guides
-let g:indentguides_state = 0
-function! IndentGuides() " {{{
-    if g:indentguides_state
-        let g:indentguides_state = 0
-        2match None
-    else
-        let g:indentguides_state = 1
-        execute '2match IndentGuides /\%(\_^\s*\)\@<=\%(\%'.(0*&sw+1).'v\|\%'.(1*&sw+1).'v\|\%'.(2*&sw+1).'v\|\%'.(3*&sw+1).'v\|\%'.(4*&sw+1).'v\|\%'.(5*&sw+1).'v\|\%'.(6*&sw+1).'v\|\%'.(7*&sw+1).'v\)\s/'
-    endif
-endfunction " }}}
-nnoremap <leader>i :call IndentGuides()<cr>
-
